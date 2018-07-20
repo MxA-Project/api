@@ -15,8 +15,8 @@ def get_followers_count(token):
         followers_count = redis_db.hget(username, "followcount")
         if(followers_count):
             return followers_count
-        return "failed to get your followers count"
-    return "wrong token"
+        return "failed to get your followers count", 503
+    return "wrong token", 403
 
 
 @app.route('/<token>')
